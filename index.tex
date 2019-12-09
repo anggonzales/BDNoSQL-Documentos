@@ -122,17 +122,58 @@ Mientras que la replicación busca realizar copias de los datos, repartirlos por
 	\end{center}
 \end{figure}
 
-\subsubsection{\textbf{A.3}}
+\subsubsection{\textbf{Modelo de datos}}
 
-EDITAR
+MongoDB es un tipo de base de datos de esquema flexible. Esto significa que ha de ser el usuario el que el que determina y declara el esquema de cada una de las tablas justo en el momento de realizar las inserciones. Esta funcionalidad la comparten en cierta forma muchas bases de datos NoSQL.
+Esto es bueno y malo a la vez. Por un lado se tiene la flexibilidad de añadir campos cuando son necesarios sin haberlos tenido que haberlos definido de antemano, o obviar algunos en los casos en los que no sean necesarios, pero a la vez se obliga al programador a ser mucho más metódico en su trabajo, puesto que el sistema no avisará de un posible error o despiste en el código.
+Las bases de datos en MongoDB residen en un host que puede alojar varias bases de datos de forma simultánea almacenadas de forma independiente. Cada una de estas bases de datos puede contener una o más colecciones, a partir de las cuales se almacenarán los objetos o documentos.
+
+\subsubsection{\textbf{BSON}}
+
+BSON es un formato binario que se utiliza para almacenar la información en MongoDB. BSON es la codificación binaria del formato JSON. Esta codificación ha sido elegida porque presenta ciertas ventajas a la hora de almacenar los datos, como la eficiencia o la compresión.
+Básicamente BSON y JSON son los formatos con los que trabaja MongoDB: JSON es el formato con el que se presenta la información a los usuarios y a las aplicaciones y BSON el formato que utiliza MongoDB de forma interna.
+
+\subsubsection{\textbf{Estructura del documento}}
+
+El reto principal que tienen los documentos como objetos en MongoDB es el de realizar un buen diseño de los mismos para que sean capaces de representar lo más ampliamente el mundo real. Para ello existen 2 herramientas que permiten a las aplicaciones representar las relaciones entre los datos: las referencias y los datos embebidos. Una de las decisiones a tomar a la hora de implementar una aplicación que utilice MongoDB como capa de backend de aplicación es la de referenciar o embeber los documentos que se necesite.
+
+\subsubsection{\textbf{Referencias}}
+Las referencias almacenan relaciones entre los datos mediante enlaces entre documentos.
+Los modelos de datos normalizados utilizan relaciones referenciales entre los documentos. Se usarán modelos de datos normalizados cuando:
 
 \begin{itemize}
 
-\item x
-\item y
-\item z
+\item Embeber documentos produzca una duplicación de la información y los costes de mantenimiento sean mayores que las ganancias en lecturas.
+\item Sea necesario representar un modelo “varios a varios” con cierta complejidad.
+\item Para modelar conjuntos de datos de mucho tamaño.
 
 \end{itemize}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=10cm]{./IMAGENES/img002} %%EJEMPLO PARA INCLUIR IMAGEN
+	\end{center}
+\end{figure}
+
+
+
+\subsubsection{\textbf{Datos embebidos}}
+Los documentos embebidos representan relaciones entre los datos almacenando la información relacionada bajo el mismo documento. Los documentos permiten embeber estructuras documentales como subdocumentos dentro de un campo o de un array.
+En general, se utilizarán modelos embebidos cuando:
+\begin{itemize}
+
+\item Existan relaciones contenidas entre dos entidades. Estos es, que dos entidades independientes sean habitualmente accedidas a través de sólo una de ellas. Por ejemplo, Persona y Dirección. Cuando únicamente se permitan búsquedas por persona para obtener su dirección. En ese caso, es preferible tener el objeto Dirección embebido dentro del de Persona.
+\item Cuando exista una relación “uno a varios” entre entidades. En este caso, la parte de “varios” suele ir embebida dentro de la de “uno”. Los motivos son similares al anterior caso.
+\item En general, en ambos se trata de minimizar en la medida de los posible las operaciones de la base de datos. Embebiendo la información se consigue leer o escribir todos los datos simultáneamente y de forma secuencial.
+
+\end{itemize}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=10cm]{./IMAGENES/img003} %%EJEMPLO PARA INCLUIR IMAGEN
+	\end{center}
+\end{figure}
+
 
 %% SEGUNDA SUBSECCION
 
