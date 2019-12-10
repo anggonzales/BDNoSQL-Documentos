@@ -1,4 +1,5 @@
 
+
 \documentclass[preprint,12pt]{elsarticle}
 
 \usepackage[spanish]{babel}
@@ -81,7 +82,7 @@ Una base de datos orientada a documentos está diseñada para gestionar informac
 A diferencia de las conocidas bases de datos relacionales con su definición de “tabla”, los sistemas documentales están diseñados entorno a la definición abstracta de un “documento”. Un documento es la unidad principal de almacenamiento de este tipo de base de datos, y toda la información que aquí se almacena, se hace en formato de documento. \newline
 
 Este tipo de Base de Datos NoSQL almacena la información como un documento, generalmente utilizando para ello una estructura simple como JSON o XML y donde se utiliza una clave única para cada registro. Este tipo de implementación permite, además de realizar búsquedas por clave – valor, realizar consultas más avanzadas sobre el contenido del documento.
-
+\cite{BDnoSQLMongodb}
 \subsubsection{\textbf{Ventajas}}
 \begin{itemize}
 
@@ -89,9 +90,9 @@ Este tipo de Base de Datos NoSQL almacena la información como un documento, gen
 \item Los gestores no tienen que hacer operaciones complejas como las uniones para encontrar los datos que normalmente están relacionados, ya que todo se encuentra en un mismo lugar.
 
 \end{itemize}
-
+\cite{BDnoSQLMongodb}
 \subsection {\textbf{MongoDB}}
-MongoDB es una base de datos NoSQL Open Source orientada a documentos y ha sido diseñada con la idea de que fuera fácil tanto desarrollar para ella como de ser administrada. Un documento es una estructura de datos compuesta de pares de campos y valores. Además, estos objetos son muy similares a lo que serían objetos en notación JSON.\newline
+MongoDB es una base de datos NoSQL Open Source orientada a documentos y ha sido diseñada con la idea de que fuera fácil tanto desarrollar para ella como de ser administrada. Un documento es una estructura de datos compuesta de pares de campos y valores. Además, estos objetos son muy similares a lo que serían objetos en notación JSON. \newline
 Utilizar documentos tiene ciertas ventajas:
 \begin{itemize}
 
@@ -100,6 +101,7 @@ Utilizar documentos tiene ciertas ventajas:
 \item Tener un esquema dinámico es la base del polimorfismo.
 
 \end{itemize}
+ \cite{MongoDB}
 \subsubsection{\textbf{Características generales}}
 \begin{itemize}
 \item 
@@ -114,7 +116,7 @@ MongoDB utiliza un sistema de replicación empleando la arquitectura maestro –
 
 Mientras que la replicación busca realizar copias de los datos, repartirlos por nuevos hosts, permitiendo ofrecer alta disponibilidad, balanceo de carga y copias automáticas de seguridad, el sharding busca particionar esas tablas que, previsiblemente, se van haciendo más grandes y cada vez son más costosas de replicar.
 \end{itemize}
-
+ \cite{MongoDB}
 
 \begin{figure}[htb]
 	\begin{center}
@@ -124,8 +126,8 @@ Mientras que la replicación busca realizar copias de los datos, repartirlos por
 
 \subsubsection{\textbf{Modelo de datos}}
 
-MongoDB es un tipo de base de datos de esquema flexible. Esto significa que ha de ser el usuario el que el que determina y declara el esquema de cada una de las tablas justo en el momento de realizar las inserciones. Esta funcionalidad la comparten en cierta forma muchas bases de datos NoSQL.
-Esto es bueno y malo a la vez. Por un lado se tiene la flexibilidad de añadir campos cuando son necesarios sin haberlos tenido que haberlos definido de antemano, o obviar algunos en los casos en los que no sean necesarios, pero a la vez se obliga al programador a ser mucho más metódico en su trabajo, puesto que el sistema no avisará de un posible error o despiste en el código.
+MongoDB es un tipo de base de datos de esquema flexible. Esto significa que ha de ser el usuario el que el que determina y declara el esquema de cada una de las tablas justo en el momento de realizar las inserciones.
+Por un lado se tiene la flexibilidad de añadir campos cuando son necesarios sin haberlos tenido que haberlos definido de antemano, o obviar algunos en los casos en los que no sean necesarios, pero a la vez se obliga al programador a ser mucho más metódico en su trabajo, puesto que el sistema no avisará de un posible error o despiste en el código.
 Las bases de datos en MongoDB residen en un host que puede alojar varias bases de datos de forma simultánea almacenadas de forma independiente. Cada una de estas bases de datos puede contener una o más colecciones, a partir de las cuales se almacenarán los objetos o documentos.
 
 \subsubsection{\textbf{BSON}}
@@ -151,10 +153,10 @@ Los modelos de datos normalizados utilizan relaciones referenciales entre los do
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[width=10cm]{./IMAGENES/img002} %%EJEMPLO PARA INCLUIR IMAGEN
+		\includegraphics[width=10cm]{./IMAGENES/img02.png} %%EJEMPLO PARA INCLUIR IMAGEN
 	\end{center}
 \end{figure}
-
+ \cite{MongoDB}
 
 
 \subsubsection{\textbf{Datos embebidos}}
@@ -165,31 +167,16 @@ En general, se utilizarán modelos embebidos cuando:
 \item Existan relaciones contenidas entre dos entidades. Estos es, que dos entidades independientes sean habitualmente accedidas a través de sólo una de ellas. Por ejemplo, Persona y Dirección. Cuando únicamente se permitan búsquedas por persona para obtener su dirección. En ese caso, es preferible tener el objeto Dirección embebido dentro del de Persona.
 \item Cuando exista una relación “uno a varios” entre entidades. En este caso, la parte de “varios” suele ir embebida dentro de la de “uno”. Los motivos son similares al anterior caso.
 \item En general, en ambos se trata de minimizar en la medida de los posible las operaciones de la base de datos. Embebiendo la información se consigue leer o escribir todos los datos simultáneamente y de forma secuencial.
-
 \end{itemize}
-
+ \cite{MongoDB}
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[width=10cm]{./IMAGENES/img003} %%EJEMPLO PARA INCLUIR IMAGEN
+		\includegraphics[width=10cm]{./IMAGENES/img03.png} %%EJEMPLO PARA INCLUIR IMAGEN
 	\end{center}
 \end{figure}
 
 
-%% SEGUNDA SUBSECCION
 
-\subsection{\textbf{B}}
-
-\subsubsection{\textbf{B.1}}
-
-EDITAR
-
-\subsubsection{\textbf{B.2}}	
-
-EDITAR
-
-\subsubsection{\textbf{B.3}}	
-
-EDITAR
 
 
 %% ----------------------------------------------------------------------------------------------------------------------------------
@@ -199,8 +186,46 @@ EDITAR
 
 \section{Análisis (Aplicación)}
 
-EDITAR
+\subsection {\textbf{Mongo DB}}
+Una de las razones principales porr la que los desarroladores usan MongoDB es debido a su modelo de datos intuitivo. MongoDB almacena su información en documentos en lugar de filas. ¿Qué es un documento? Aqui hay un ejemplo:
+\subsubsection{\textbf{Esquema Básico}}
+Los productos y las categorías son los pilares de cualquier sitio de comercio electrónico. Los productos, en un modelo RDBMS(Sistema de gestión de bases de datos relacionales) normalizado, tienden a requerir una gran cantidad de tablas. Hay una mesa para
+información básica del producto, como el nombre y el código, pero habrá otras tablas para
+Relacionar la información de envío y los historiales de precios. Este esquema multitarea será facilitado por la capacidad del RDBMS para unir tablas.
+ Modelar un producto en MongoDB debería ser menos complicado. Debido a que las colecciones no aplican un esquema, cualquier documento del producto tendrá espacio para cualquier
+atributos dinámicos que necesita el producto. Mediante el uso de matrices en su documento, puede
+normalmente condensa una representación RDBMS multitable en una sola colección MongoDB.
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=10cm]{./IMAGENES/mongodb1} %%EJEMPLO PARA INCLUIR IMAGEN
+	\end{center}
+\end{figure}
+\cite{ecured}
+Más concretamente, la imagen muestra un producto de muestra de una tienda de jardinería. Es recomendable asignar este documento a una variable antes de insertarlo en la base de datos utilizando
+"db.products.insert (yourVariable)" para poder ejecutar las consultas discutidas durante las
+siguientes varias páginas.
+\subsubsection{\textbf{Usuarios y ordenes}}
+Si observa cómo modela los usuarios y los pedidos, verá otra relación común: uno a muchos. Es decir, cada usuario tiene muchos pedidos. En un RDBMS(Sistema de gestión de bases de datos relacionales), usaría una clave foránea en su tabla de pedidos; aquí, la convención es similar.
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=10cm]{./IMAGENES/mongodb2} %%EJEMPLO PARA INCLUIR IMAGEN
+	\end{center}
+\end{figure}
+\subsubsection{\textbf{Manejando Bases de Datos}}
+No existe una fomra explicita de vrear una base de datos en MongoDB. En cambio, una base de datos se crea automaticamente una vez que escribe en una coleecion en esa base de datos. A continuacion veremos un ejemplo:
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=15cm]{./IMAGENES/mongodb3} %%EJEMPLO PARA INCLUIR IMAGEN
+	\end{center}
+\end{figure}
 
+Suponiendo que la base de datos no existe, la base de datos no se a creado en el disco luego de haber ejecutado el codigo mencionado. Todo lo que se ha hecho es instanciar una instancia de la clase Mongo::DB, que representa una base de datos de MongoDB. Para crear nuestra base de datos se debera ejecutar el código siguiente:
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=15cm]{./IMAGENES/mongodb4} %%EJEMPLO PARA INCLUIR IMAGEN
+	\end{center}
+\end{figure}
+\cite{Raul2014}
 %% ----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -210,7 +235,10 @@ EDITAR
 
 \begin{itemize}
 
-\item Conclusion 1 : \\ A
+\item Conclusion 1 : \\ Este artículo describe las limitaciones de las bases de datos tradicionales.
+y las ventajas de la base de datos NO SQL, análisis, objetivo de sus fortalezas
+y debilidades respectivamente, lo que ayudará al usuario a elegir
+entre una base de datos NO SQL y una base de datos tradicional.
 
 \item Conclusion 2 : \\ B
 
