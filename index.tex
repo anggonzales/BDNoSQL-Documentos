@@ -20,17 +20,24 @@
 		
 		\author{Aponte Roldán, Sigfredo              		(2016054468))}
 		\author{Gonzales Cave, Angel Gabriel              	(2017057861))} %%cambiar
-		\author{Pacora Silva, Jorge Carlos         		(xxxxxxxxxx))} %%cambiar
-		\author{Quispe Mamani, José Luis             		(xxxxxxxxxx))} %%cambiar 
+		\author{Pacora Silva, Jorge Carlos         		(2013000725))} %%cambiar
+		\author{Quispe Mamani, José Luis             		())} %%cambiar 
 		\address{Tacna, Perú}
 		
 %% ABSTRACT --------------------------------------------------------------------------------------------------------------------
-
-		\begin{abstract}
+\begin{abstract}
 		
-EDITAR
+MongoDB stores data in flexible documents similar to JSON, so the fields may vary between documents and the data structure may change over time.
 
-		\end{abstract}
+The document model is assigned to the objects in the code of your application to facilitate the work with the data
+
+Ad hoc queries, real-time indexing and aggregation offer powerful ways to access and analyze data
+
+MongoDB is a database distributed at its core, so high availability, horizontal scalability and geographic distribution are integrated and easy to use.
+
+MongoDB is free to use. Versions released before October 16, 2018 are published under the AGPL license. All versions after October 16, 2018, including patches released for earlier versions, are published under Public Server License (SSPL) v1.
+
+\end{abstract}
 
 %% ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -38,9 +45,17 @@ EDITAR
 
 %% RESUMEN ---------------------------------------------------------------------------------------------------------------------
 
-	\section{Resumen}
+\section{Resumen}
+MongoDB almacena datos en documentos flexibles similares a JSON, por lo que los campos pueden variar entre documentos y la estructura de datos puede cambiarse con el tiempo
 
-EDITAR
+El modelo de documento se asigna a los objetos en el código de su aplicación para facilitar el trabajo con los datos
+
+Las consultas ad hoc, la indexación y la agregación en tiempo real ofrecen maneras potentes de acceder a los datos y analizarlos
+
+MongoDB es una base de datos distribuida en su núcleo, por lo que la alta disponibilidad, la escalabilidad horizontal y la distribución geográfica están integradas y son fáciles de usar
+
+MongoDB es de uso gratuito. Las versiones lanzadas antes del 16 de octubre de 2018 se publican bajo licencia AGPL. Todas las versiones posteriores al 16 de octubre de 2018, incluidos los parches lanzados para versiones anteriores, se publican bajo Licencia pública del lado del servidor (SSPL) v1.
+
 
 %% ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -48,16 +63,24 @@ EDITAR
 %% INTRODUCION ----------------------------------------------------------------------------------------------------------------
 
 \section{Introducción} 
+Si tuviésemos que explicar qué es MongoDB podríamos decir que es una base de datos opensource NOSQL basada en documentos desarrollada por la gente de 10gen. Aunque una vez que cogió auge la base de datosMongoDB pasaron a llamarse con el mismo nombre y ahora la empresa y el producto se llaman MongoDB. El nombre de MongoDB proviene de “humongous”, que significa enorme en inglés. MongoDB es una base de datos NOSQL, opensource, escrita en C++, escalable y de alto rendimiento.
 
-EDITAR
+MongoDB y los documentos
+El elemento principal de MongoDB es como almacena la información. MongoDB almacena toda la información en documentos JSON.
 
-\begin{itemize}
-\item A
-\item B
-\item C
+El almacenar la información en documentos JSON permite a MongoDB tener independencia del schema de almacenamiento, es decir, pueden existir más o menos campos en el documento dentro de una misma colección de documentos. Una de las cosas importantes de los documentos es que estos van tipados. Además los documentos nos permiten nuevas estructuras como arrays o subdocumentos que permitirán que de una sola consulta se recupere toda la información y evite así la necesidad de ejecutar consultas de tipo join.
 
+Principales características de MongoDB
+Aunque en los siguientes capítulos iremos viendo en detalle todas las funcionalidades de MongoDB, podríamos decir que las principales características de MongoDB son:
 
-\end{itemize}
+Alto rendimiento
+El alto rendimiento para la persistencia en MongoDB se basa en dos puntos: La posibilidad de tener documentos con la información anidada, evitando, de esta forma, un número elevado de operaciones de I/O. Y el soporte de índices y la posibilidad de crear índices sobre arrays y subdocumentos.
+
+Alta disponibilidad
+MongoDB proporciona alta disponibilidad mediante la réplica automática conocida como replica set, la cual proporciona redundancia de datos y failover automático, es decir, la transferencia automática a un nuevo nodo cuando se encuentra un fallo en uno de los nodos.
+
+Escalado Automático
+MongoDB nos ofrece un escalado horizontal. Para ello el sistema de sharding nos permite distribuir información por diferentes cluster de máquinas.
 
 %% ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -67,15 +90,6 @@ EDITAR
 \section{Marco Teórico}
 
 %% PRIMERA SUBSECCION 
-
-\subsection {\textbf{A}}
-
-\subsubsection{\textbf{A.1}}
-
-EDITAR \cite{SQLne}  %% EJEMPLO DE COMO CITAR UNA REFERENCIA EN UN PÁRRAFO
-
-\subsubsection{\textbf{A.2}}
-
 
 \subsection {\textbf{Base de datos NoSQL orientadas a Documentos}}
 Una base de datos orientada a documentos está diseñada para gestionar información orientada a documentos o datos semiestructurados. Tienen un grado de complejidad y flexibilidad superior a las bases de datos clave – valor. \newline
@@ -88,8 +102,8 @@ Este tipo de Base de Datos NoSQL almacena la información como un documento, gen
 
 \item Almacenar y recuperar todos los datos relacionados como una sola unidad puede entregar ventajas enormes en el rendimiento y la escalabilidad.
 \item Los gestores no tienen que hacer operaciones complejas como las uniones para encontrar los datos que normalmente están relacionados, ya que todo se encuentra en un mismo lugar.
-
 \end{itemize}
+
 \cite{BDnoSQLMongodb}
 \subsection {\textbf{MongoDB}}
 MongoDB es una base de datos NoSQL Open Source orientada a documentos y ha sido diseñada con la idea de que fuera fácil tanto desarrollar para ella como de ser administrada. Un documento es una estructura de datos compuesta de pares de campos y valores. Además, estos objetos son muy similares a lo que serían objetos en notación JSON. \newline
@@ -128,7 +142,6 @@ Mientras que la replicación busca realizar copias de los datos, repartirlos por
 
 MongoDB es un tipo de base de datos de esquema flexible. Esto significa que ha de ser el usuario el que el que determina y declara el esquema de cada una de las tablas justo en el momento de realizar las inserciones.
 Por un lado se tiene la flexibilidad de añadir campos cuando son necesarios sin haberlos tenido que haberlos definido de antemano, o obviar algunos en los casos en los que no sean necesarios, pero a la vez se obliga al programador a ser mucho más metódico en su trabajo, puesto que el sistema no avisará de un posible error o despiste en el código.
-Las bases de datos en MongoDB residen en un host que puede alojar varias bases de datos de forma simultánea almacenadas de forma independiente. Cada una de estas bases de datos puede contener una o más colecciones, a partir de las cuales se almacenarán los objetos o documentos.
 
 \subsubsection{\textbf{BSON}}
 
@@ -242,9 +255,8 @@ y las ventajas de la base de datos NO SQL, análisis, objetivo de sus fortalezas
 y debilidades respectivamente, lo que ayudará al usuario a elegir
 entre una base de datos NO SQL y una base de datos tradicional.
 
-\item Conclusion 2 : \\ B
+\item Conclusion 2 : \\ Son muchos los casos en el que se requiere realizar un previo análisis sobre que tipo de base de datos NoSQL es la mejor opción, ya que los diferentes tipos de base de datos NoSQL están orientados a brindar diferentes soluciones dependiendo del caso o aplicativo que deseamos implementar.
 
-\item Conclusion 3 : \\ C
 
 \end{itemize}
 
